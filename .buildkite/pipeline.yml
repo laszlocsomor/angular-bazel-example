@@ -1,3 +1,7 @@
 steps:
   - label: Lint
     command: yarn && yarn buildifier -mode=check
+  - label: Test
+    command: yarn test
+  - label: e2e
+    command: yarn e2e

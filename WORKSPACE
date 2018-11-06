@@ -49,7 +49,13 @@ rules_angular_dependencies()
 load("@build_bazel_rules_nodejs//:defs.bzl", "check_bazel_version", "node_repositories", "yarn_install")
 
 # The minimum bazel version to use with this example repo is 0.17.1
+# If you run `npm` or `yarn` based tooling, this is unneeded since the package.json
+# indicates the version of the `@bazel/bazel` package to be used.
+# However, full-stack developers without nodejs/npm/yarn installed can just run `bazel`
+# to develop in this repo, so we keep this check to ensure those developers have a working
+# version of Bazel.
 check_bazel_version("0.17.1")
+
 node_repositories(
     node_version = "10.9.0",
     yarn_version = "1.9.2",
