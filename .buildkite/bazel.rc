@@ -1,0 +1,20 @@
+# These options are enabled when running on BuildKite
+# We do this by copying this file to /etc/bazel.bazelrc at the start of the build.
+
+# Don't be spammy in the logs
+build --noshow_progress
+
+# Print all the options that apply to the build.
+# This helps us diagnose which options override others
+# (e.g. /etc/bazel.bazelrc vs. tools/bazel.rc)
+build --announce_rc
+
+# Prevent unstable environment variables from tainting cache keys
+build --experimental_strict_action_env
+
+# FIXME: does modern Bazel need this setting on BuildKite?
+# build --experimental_repository_cache=TODO
+
+# Use fixed chunk names for code-split bundles in CI
+# so that GitHub buildsize bot reports are accurate
+build --define=ROLLUP_BUNDLE_FIXED_CHUNK_NAMES=1

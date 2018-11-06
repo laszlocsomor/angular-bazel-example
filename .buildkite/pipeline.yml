@@ -1,3 +1,4 @@
+# TODO: copy the bazel.rc file in this directory to apply to all builds
 steps:
   - label: 🐛
     command: yarn && yarn buildifier -mode=check
